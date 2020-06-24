@@ -35,6 +35,8 @@ There are quite a few python packet parsing modules, this one is different becau
 
 This package allows parsing from a capture file or a live capture, using all wireshark dissectors you have installed. Tested on windows/linux.
 
+>Pyshark is a packet parsing only package, being a wrapper of tshark.
+
 <br/>
 
 ##### transport_layer
