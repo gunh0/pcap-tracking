@@ -27,7 +27,8 @@ def network_high_conversation(packet):
 capture = pyshark.FileCapture('res/Tor_Starting.pcap')
 conversations = []
 for packet in capture:
-    results = network_trans_conversation(packet)
+    #results = network_trans_conversation(packet)
+    results = network_high_conversation(packet)
     if results != None:
         conversations.append(results)
 
