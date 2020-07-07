@@ -1,9 +1,14 @@
-- [How the NSA Can Crack Tor's Anonymity](#How the NSA Can Crack Tor's Anonymity)
-- [Demonstration Code Fragments about pyshark](#Demonstration Code Fragments about pyshark)
+# Reference for Network Packet Detection and Analysis Environment
+
+- [How the NSA Can Crack Tor's Anonymity](#How-the-NSA-Can-Crack-Tor's-Anonymity)
+- [Demonstration Code Fragments about .pcap](#Demonstration-Code-Fragments-about-.pcap)
+  - [dpkt](#dpkt)
   - [pyshark](#pyshark)
-- [Compression Method](#Compression Method)
+- [Compression Method](#Compression-Method)
   - [Zstandard](#Zstandard)
-- [How To Transfer Files With Rsync Over SSH](#How To Transfer Files With Rsync Over SSH)
+- [How To Transfer Files With Rsync Over SSH](#How-To-Transfer-Files-With-Rsync-Over-SSH)
+  - [Differences between rsync on remote and rsync local on mounted sshfs?](#Differences-between-rsync-on-remote-and-rsync-local-on-mounted-sshfs?)
+  - [rsync from Linux to Windows over SSH](#rsync-from-Linux-to-Windows-over-SSH)
 
 <br/>
 
@@ -21,7 +26,9 @@ Tor has always kept web traffic anonymous by delaying or otherwise altering the 
 
 <br/>
 
-## Demonstration Code Fragments about pyshark
+## Demonstration Code Fragments about .pcap
+
+### dpkt
 
 A fast, simple packet creation/parsing python module with definitions for the basic TCP/IP protocols.
 
@@ -127,13 +134,11 @@ $ sudo apt update && sudo apt install build-essential		#Ubuntu/Debian
 
 ## How To Transfer Files With Rsync Over SSH
 
-https://phoenixnap.com/kb/how-to-rsync-over-ssh
-
-Posted January 31, 2020
+**Reference:** https://phoenixnap.com/kb/how-to-rsync-over-ssh	| Posted January 31, 2020
 
 <br/>
 
-### Verify Rsync Installation
+##### Verify Rsync Installation
 
 Most recent Linux distributions have **rsync** by default. To verify your system has rsync installed, run the installation command.
 
@@ -153,7 +158,7 @@ sudo yum install rsync
 
 <br/>
 
-### Transfer Files with Rsync over SSH
+##### Transfer Files with Rsync over SSH
 
 Before you can start transferring files and directories with rsync over SSH, make sure you can [use SSH to connect to a remote server](https://phoenixnap.com/kb/ssh-to-connect-to-remote-server-linux-or-windows). Once verified, you can begin backing up your data. Ensure your destination system has sufficient storage space.
 
@@ -165,7 +170,7 @@ rsync OPTION SourceDirectory_or_filePath user@serverIP_or_name:Target
 
 <br/>
 
-### Check Rsync File Transfer Progress
+##### Check Rsync File Transfer Progress
 
 To check the status of rsync transfers, use the **`-P`** option. This option displays the transfer times, as well as the names of the files and directories that are synced.
 
@@ -189,3 +194,12 @@ rsync -aP ~/SourceDirectory/ username@192.168.56.100:~/Destination
 >
 > In terms of access restrictions, SSHFS requires SFTP access, whereas rsync requires the ability to run code (specifically, the rsync program) via a shell. If the user doesn't have a shell account, It's possible and common to provide an account with a special shell that only allows running a few programs including `sftp-server` and `rsync`.
 
+<br/>
+
+### rsync from Linux to Windows over SSH
+
+Cygwin is a POSIX-compatible programming and runtime environment that runs natively on Microsoft Windows. Under Cygwin, source code designed for Unix-like operating systems may be compiled and run natively with minimal modification.
+
+> I ended up installing [cygwin](https://cygwin.com/setup-x86_64.exe), and made sure to also install the `rsync` package. Then, I modified my `PATH` environment variable to include cygwin's `bin` directory. I was then able to call `rsync` from powershell, to confirm the installation worked.
+>
+> After that, I was able to successfully use `rsync` on my Linux machine to transfer files to the Windows machine.
