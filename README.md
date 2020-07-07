@@ -7,7 +7,7 @@
 - [Compression Method](#Compression-Method)
   - [Zstandard](#Zstandard)
 - [How To Transfer Files With Rsync Over SSH](#How-To-Transfer-Files-With-Rsync-Over-SSH)
-  - [Differences between rsync on remote and rsync local on mounted sshfs?](#Differences-between-rsync-on-remote-and-rsync-local-on-mounted-sshfs?)
+  - [Differences between rsync on remote and rsync local on mounted sshfs?](#Differences-between rsync-on-remote-and-rsync-local-on-mounted-sshfs?)
   - [rsync from Linux to Windows over SSH](#rsync-from-Linux-to-Windows-over-SSH)
 
 <br/>
@@ -184,7 +184,7 @@ rsync -aP ~/SourceDirectory/ username@192.168.56.100:~/Destination
 
 <br/>
 
-##### [Differences between rsync on remote and rsync local on mounted sshfs?](https://unix.stackexchange.com/questions/283838/differences-between-rsync-on-remote-and-rsync-local-on-mounted-sshfs)
+### Differences between rsync on remote and rsync local on mounted sshfs?
 
 > SSHFS is convenient, but it doesn't mesh well with rsync or more generally with synchronization tools.
 >
@@ -193,6 +193,8 @@ rsync -aP ~/SourceDirectory/ username@192.168.56.100:~/Destination
 > SSHFS is also detrimental to performance if there are many small files. Rsync needs to check at least the metadata of every file to determine whether it's been modified. With SSHFS, this requires a network round trip for each file. With rsync over SSH, the two sides can work in parallel and transfer information in bulk, which is a lot faster.
 >
 > In terms of access restrictions, SSHFS requires SFTP access, whereas rsync requires the ability to run code (specifically, the rsync program) via a shell. If the user doesn't have a shell account, It's possible and common to provide an account with a special shell that only allows running a few programs including `sftp-server` and `rsync`.
+>
+> Reference: https://unix.stackexchange.com/questions/283838/differences-between-rsync-on-remote-and-rsync-local-on-mounted-sshfs
 
 <br/>
 
