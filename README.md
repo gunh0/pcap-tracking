@@ -7,7 +7,7 @@
 - [Compression Method](#Compression-Method)
   - [Zstandard](#Zstandard)
 - [How To Transfer Files With Rsync Over SSH](#How-To-Transfer-Files-With-Rsync-Over-SSH)
-  - [Differences between rsync on remote and rsync local on mounted sshfs?](#Differences-between-rsync-on-remote-and-rsync-local-on-mounted-sshfs?)
+  - Differences between rsync on remote and rsync local on mounted sshfs?
   - [rsync from Linux to Windows over SSH](#rsync-from-Linux-to-Windows-over-SSH)
 
 <br/>
