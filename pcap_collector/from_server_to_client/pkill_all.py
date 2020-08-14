@@ -16,7 +16,7 @@ try:
         for row in csv_reader:
             user_info.append(row[0])    # username
             user_info.append(row[1])    # password
-            
+
 except:
     print("Check Private Resource!")
 
@@ -24,8 +24,12 @@ print(gcp_ip_list)
 print(user_info)
 print(command_list)
 
+counter=0
+
 for ip in gcp_ip_list:
     print('---------------------------SSH START---------------------------')
+    counter+=1
+    print("Count: ",counter)
     cli = paramiko.SSHClient()
     cli.set_missing_host_key_policy(paramiko.AutoAddPolicy)
 
@@ -36,6 +40,20 @@ for ip in gcp_ip_list:
     cli.connect(target, port=22, username=user_info[0], password=user_info[1])
 
     print("Now Command: ","ps -ecf | grep tor/tor")
+    stdin, stdout, stderr = cli.exec_command("ps -ecf | grep tor/tor")
+    lines = stdout.readlines()
+    print(''.join(lines))
+
+    for i in (0,len(lines)-1):
+        find_pid = lines[i].split(" ")
+        while '' in find_pid:
+            find_pid.remove('')
+        cmd = "echo \""
+        cmd += user_info[1]
+        cmd += "\" | sudo -S -k kill -9 "
+        cmd += find_pid[1]
+        cli.exec_command(cmd)
+
     stdin, stdout, stderr = cli.exec_command("ps -ecf | grep tor/tor")
     lines = stdout.readlines()
     print(''.join(lines))
