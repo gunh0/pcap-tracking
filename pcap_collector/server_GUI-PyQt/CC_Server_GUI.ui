@@ -299,7 +299,7 @@
      </rect>
     </property>
     <property name="text">
-     <string>Port: 9998</string>
+     <string>Port: 9999</string>
     </property>
    </widget>
    <widget class="QLabel" name="label_13">
