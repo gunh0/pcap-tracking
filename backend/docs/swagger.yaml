@@ -1,0 +1,95 @@
+definitions:
+  models.PacketStats:
+    properties:
+      bytesPerSec:
+        type: integer
+      bytesTotal:
+        type: integer
+      interface:
+        type: string
+      packetsPerSec:
+        type: integer
+      packetsTotal:
+        type: integer
+      protocolStats:
+        additionalProperties:
+          format: int64
+          type: integer
+        type: object
+      timestamp:
+        type: string
+    type: object
+  models.SystemStats:
+    properties:
+      activeInterfaces:
+        type: integer
+      interfaceStats:
+        additionalProperties:
+          $ref: '#/definitions/models.PacketStats'
+        type: object
+      timestamp:
+        type: string
+      totalBytes:
+        type: integer
+      totalPackets:
+        type: integer
+      uptime:
+        description: Duration in nanoseconds
+        type: integer
+    type: object
+info:
+  contact: {}
+paths:
+  /api/v1/health:
+    get:
+      consumes:
+      - application/json
+      description: Check if the API service is running
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Health status
+          schema:
+            additionalProperties: true
+            type: object
+      summary: Health check endpoint
+      tags:
+      - health
+  /api/v1/interfaces:
+    get:
+      consumes:
+      - application/json
+      description: Retrieve list of available network interfaces for packet capture
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: List of network interfaces
+          schema:
+            additionalProperties: true
+            type: object
+        "500":
+          description: Internal server error
+          schema:
+            additionalProperties: true
+            type: object
+      summary: Get network interfaces
+      tags:
+      - interfaces
+  /api/v1/stats:
+    get:
+      consumes:
+      - application/json
+      description: Retrieve current packet capture statistics for all monitored interfaces
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Packet capture statistics
+          schema:
+            $ref: '#/definitions/models.SystemStats'
+      summary: Get packet capture statistics
+      tags:
+      - statistics
+swagger: "2.0"
