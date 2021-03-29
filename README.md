@@ -16,7 +16,7 @@
 
 <br/>
 
-### How the NSA Can Crack Tor's Anonymity
+## How the NSA Can Crack Tor's Anonymity
 
 Tor has always kept web traffic anonymous by delaying or otherwise altering the packets of data that are sent through servers (that's why Tor tends to run slower than your standard browser), making it look like the traffic is coming from a place that it's not actually (the IP address that the server "sees" is called an "exit node"). If the end server of the site you visited can also detect the origin point of where your traffic enter Tor (the "entry node" or "entry relay), then anonymity is lost.
 
@@ -205,3 +205,10 @@ Cygwin is a POSIX-compatible programming and runtime environment that runs nativ
 > I ended up installing [cygwin](https://cygwin.com/setup-x86_64.exe), and made sure to also install the `rsync` package. Then, I modified my `PATH` environment variable to include cygwin's `bin` directory. I was then able to call `rsync` from powershell, to confirm the installation worked.
 >
 > After that, I was able to successfully use `rsync` on my Linux machine to transfer files to the Windows machine.
+
+<br/>
+
+------
+
+<br/>
+
