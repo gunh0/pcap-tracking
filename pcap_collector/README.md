@@ -7,19 +7,22 @@ Start-Service sshd
 
 # check
 Get-Service sshd
-
-# mount
-sshfs Tor@X.X.X.X:D:\\\Tor_CIFS_300 /home/jjangga94temp/Tor_CIFS -o allow_other,umask=000,reconnect,nonempty
-
-# check
-df -hT
 ```
 
 <br/>
 
 ### run client
 
-```
+```bash
+sudo apt update
+sudo apt install python3-pip
+
+# mount
+sshfs Tor@X.X.X.X:D:\\\Tor_CIFS_300 /home/jjangga94temp/Tor_CIFS -o allow_other,umask=000,reconnect,nonempty
+
+# check
+df -hT
+
 sudo python /home/jjanggatemp/Tor_CIFS/Source/client/client.py
 ```
 
