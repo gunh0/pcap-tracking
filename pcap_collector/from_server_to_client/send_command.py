@@ -6,6 +6,10 @@ gcp_ip_list=[]
 user_info=[]
 command_list=[]
 
+commander_file = os.path.dirname(os.path.realpath(__file__))
+commander_file += "\\private\\command-list.txt"
+print(commander_file)
+
 try:
     with open('private/ip_list.csv') as csv_file:
         csv_reader = csv.reader(csv_file)
@@ -16,10 +20,13 @@ try:
         for row in csv_reader:
             user_info.append(row[0])    # username
             user_info.append(row[1])    # password
-    with open('private/command_list.csv') as csv_file:
-        csv_reader = csv.reader(csv_file)
-        for row in csv_reader:
-            command_list.append(row[0])    # username
+
+    # read command text file
+    f = open(commander_file,"r",encoding='utf8')
+    while True:
+        line = f.readline()
+        if not line: break
+        command_list.append(line)
 except:
     print("Check Private Resource!")
 
@@ -40,8 +47,8 @@ for ip in gcp_ip_list:
     for command in command_list:
         print("Now Command: ",command)
         stdin, stdout, stderr = cli.exec_command(command)
-        #lines = stdout.readlines()
-        #print(''.join(lines))
+        lines = stdout.readlines()
+        print(''.join(lines))
     
     cli.close()
     print('---------------------------SSH END---------------------------')
