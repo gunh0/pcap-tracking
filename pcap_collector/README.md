@@ -13,6 +13,16 @@ Get-Service sshd
 
 ### run client
 
+#### 1. Using SuperPuTTY
+
+![image-20201012100252143](README.assets/image-20201012100252143.png)
+
+![image-20201012100335604](README.assets/image-20201012100335604.png)
+
+<br/>
+
+#### 2. SSHFS to Mount Remote File Systems Over SSH
+
 ```bash
 sudo apt update
 sudo apt install python3-pip
@@ -22,8 +32,6 @@ sshfs Tor@X.X.X.X:D:\\\Tor_CIFS_300 /home/jjangga94temp/Tor_CIFS -o allow_other,
 
 # check
 df -hT
-
-sudo python /home/jjanggatemp/Tor_CIFS/Source/client/client.py
 ```
 
 <br/>
@@ -31,6 +39,8 @@ sudo python /home/jjanggatemp/Tor_CIFS/Source/client/client.py
 <br/>
 
 ### Pcap_collector
+
+- **server_GUI-PyQt**
 
 - ##### from_server_to_client
 
