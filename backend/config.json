@@ -1,0 +1,14 @@
+{
+  "server": {
+    "port": "8080",
+    "host": "0.0.0.0"
+  },
+  "capture": {
+    "interfaces": ["en4"],
+    "snapLength": 1024,
+    "promiscuous": true,
+    "timeoutMs": 5000,
+    "bufferSizeMB": 100,
+    "statsInterval": 5
+  }
+}
